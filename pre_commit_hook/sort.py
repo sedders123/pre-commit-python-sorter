@@ -11,6 +11,10 @@ def imports_incorrect(filename):
 
 
 def main(argv=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filenames', nargs='*', help='Filenames to run')
+    
+    args = parser.parse_args(argv)
     for filename in args.filenames:
         if imports_incorrect(filename):
             isort.SortImports(filename)
